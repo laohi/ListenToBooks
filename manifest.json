@@ -1,6 +1,6 @@
 {
     "name" : "ListenToBooks",
-    "appid" : "__UNI__6BAE5B0",
+    "appid" : "__UNI__A25F15A",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -50,14 +50,14 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxcc651fcbab275e33",
+        "appid" : "wxc4052568f545183c",
         "setting" : {
             "urlCheck" : false,
             "postcss" : true,
             "minified" : true
         },
         "usingComponents" : true,
-        "requiredBackgroundModes": ["audio", "location"]
+        "requiredBackgroundModes" : [ "audio", "location" ]
     },
     "mp-alipay" : {
         "usingComponents" : true

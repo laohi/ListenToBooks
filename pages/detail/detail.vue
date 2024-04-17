@@ -573,11 +573,11 @@ const goHome = () => {
 	});
 }
 
-const getIsSubscribe = () => {
-	console.log(1);
-	const res: any = albumsService.isSubscribeAlbum(props.id)
+const getIsSubscribe = async () => {
+	const res: any = await albumsService.isSubscribeAlbum(props.id)
 	isSubscribe.value = res.data
 }
+
 onLoad(() => {
 	getAlbumDetailInfo()
 	getVipSettingList()

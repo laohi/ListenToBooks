@@ -50,9 +50,17 @@
 							<text>{{ orderInfo?.payWayName }}</text>
 						</text>
 					</view>
+					<view class="gui-border-b gui-m-t-20 gui-m-b-20"></view>
+					<view class="gui-flex gui-space-between gui-align-items-end gui-m-t-10">
+						<text>订单状态</text>
+						<text class="gui-block gui-color-gray">
+							<text>{{ ORDER_STATUS_NAME_MAP[orderInfo?.orderStatus] }}</text>
+						</text>
+					</view>
 					<view style="height:40rpx;"></view>
 					<view v-if="orderInfo?.orderStatus === ORDER_STATUS_MAP.Unpaid" class="pay-btn-container">
 						<button class="gui-bg-red gui-block gui-color-white" @click="handleCheckout">立即结算</button>
+						<button class="gui-bg-red gui-block gui-color-white" @click="handleCancel">取消订单</button>
 					</view>
 				</view>
 
@@ -71,7 +79,7 @@ import { order } from "../../api"
 import { onLoad } from '@dcloudio/uni-app';
 import { ref } from "vue";
 import PayTypeSelect from "../../components/PayTypeSelect/PayTypeSelect.vue"
-import { ORDER_STATUS_MAP, PAY_WAY_MAP } from "../../utils/constant"
+import { ORDER_STATUS_MAP, ORDER_STATUS_NAME_MAP, PAY_WAY_MAP } from "../../utils/constant"
 import { useOrderStore } from "../../stores/order"
 import { OrderInterface } from "../../api/order/interfaces"
 const payTypeSelectRef= ref<InstanceType<typeof PayTypeSelect>>()
@@ -79,6 +87,21 @@ const orderInfo = ref()
 const orderStore = useOrderStore()
 const handleCheckout = () => {
 	payTypeSelectRef.value.open()
+}
+
+const handleCancel = async () => {
+	try {
+		const res = await order.cancelOrder(orderInfo.value.orderNo)
+		uni.showToast({
+			title: res.code === 200 ? '取消订单成功' : '取消订单失败',
+			icon: 'none'
+		})
+		if (res.code === 200) {
+			orderInfo.value.orderStatus = ORDER_STATUS_MAP.Cancelled
+		}
+	} catch (error) {
+		console.log(error)
+	}
 }
 
 onLoad(async (options: {orderNo: string}) => {
@@ -110,5 +133,6 @@ onLoad(async (options: {orderNo: string}) => {
 }
 .pay-btn-container{
 	margin: 40rpx 0;
+	display: flex;
 }
 </style>

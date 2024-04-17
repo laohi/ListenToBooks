@@ -93,6 +93,7 @@ class Service {
     options.method = 'DELETE'
     return this.api(options)
   }
+	
 }
 
 export default Service

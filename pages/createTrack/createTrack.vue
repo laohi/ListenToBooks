@@ -67,7 +67,7 @@
           <uni-forms-item label="设为私密" required name="isOpen">
             <switch
               @change="secretChangeSwitch"
-              :checked="formData.isOpen === 0"
+              :checked="formData.isOpen === '0'"
               style="transform:scale(0.8)"
               color="#008AFF" />
           </uni-forms-item>
@@ -106,7 +106,7 @@ const formData = reactive<TrackInfoInterface>({
   coverUrl: '', // 声音封面
   albumId: '', // 专辑id
   trackIntro: '', // 声音简介
-  isOpen: 1, // 是否公开：0-否 1-是
+  isOpen: '1', // 是否公开：0-否 1-是
   // id: '', // 专辑id
 })
 // 所有专辑列表
@@ -241,7 +241,7 @@ const submit = () => {
 
 // 私密开关方法
 const secretChangeSwitch = (e: any) => {
-  formData.isOpen = e.detail.value ? 0 : 1
+  formData.isOpen = e.detail.value ? '0' : '1'
 }
 
 

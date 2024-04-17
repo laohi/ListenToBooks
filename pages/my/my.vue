@@ -92,7 +92,7 @@
             v-if="pageData.currentPageNav === 'subscribe'"
             :data="item"
             :deleteItemHandler="deleteItem"
-            :handleCancel="(id)=>albumsService.isSubscribeAlbum(id)"
+            :handleCancel="(id)=>albumsService.subscribeAlbum(id)"
             :popSetting="pageData[pageData.currentPageNav].popSetting"
             :jumpRoute="pageData[pageData.currentPageNav].jumpRoute"
             v-for="item in pageData[pageData.currentPageNav].list"

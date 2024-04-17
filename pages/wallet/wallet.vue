@@ -72,6 +72,7 @@
       value=""
       before-close
       placeholder="请输入正自然数"
+			@close="handleCustomizeInvestPopupClose"
       @confirm="handleCustomizeInvest"></uni-popup-dialog>
   </uni-popup>
 </template>
@@ -149,8 +150,12 @@ const handleCustomizeInvest = (value: string) => {
       icon: "none"
     })
   }
+}
 
-
+// 关闭自定义充值弹窗
+const handleCustomizeInvestPopupClose = () => {
+	// 关闭弹窗
+	customAmountPopupRef.value.close()
 }
 
 onMounted(() => {

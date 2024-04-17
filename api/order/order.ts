@@ -131,6 +131,16 @@ class CateGory extends Service {
       loading:true
     })
   }
+	/**
+	 * @description: 取消订单
+	 * @param orderNo 订单号
+	 */
+	cancelOrder(orderNo: string) {
+		return this.get({
+			url: `/api/order/orderInfo/cancelOrder/${orderNo}`,
+			loading:true
+		})
+	}
 }
 
 export const order = new CateGory()

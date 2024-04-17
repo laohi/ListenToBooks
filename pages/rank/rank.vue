@@ -108,7 +108,7 @@ const tabbarItems = [
   { name: '播放量', dimension: 'playStatNum'},
   { name: '订阅量', dimension: 'subscribeStatNum'},
   { name: '购买量', dimension: 'buyStatNum'},
-  { name: '评论数', dimension: 'albumCommentStatNum'},
+  { name: '评论数', dimension: 'commentStatNum'},
 ]
 
 let scrollTop = ref(0) // tab标题的滚动条位置
